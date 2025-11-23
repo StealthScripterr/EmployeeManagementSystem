@@ -11,5 +11,15 @@ namespace EmployeeManagementSystem.Domain.Entities
         public Guid DepartmentId { get; set; }
         public Guid DesignationId { get; set; }
 
+        public void ChangeStatus(EmployeeStatus newStatus)
+        {
+            if (Status == newStatus)
+            {
+                return;
+            }
+
+            // In future: validate transitions here.
+            Status = newStatus;
+        }
     }
 }
