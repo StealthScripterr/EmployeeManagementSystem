@@ -4,7 +4,7 @@ namespace EmployeeManagementSystem.Domain.Entities
     public class Employee
     {
         public Guid Id { get; set; }
-        public required string Name { get; set; }
+        public string Name { get; set; }
         public string? ContactNumber { get; set; } = null;
         public EmployeeStatus Status { get; set; }
         public DateOnly DateOfJoining { get; set; }
@@ -20,6 +20,17 @@ namespace EmployeeManagementSystem.Domain.Entities
 
             // In future: validate transitions here.
             Status = newStatus;
+        }
+        public Employee(string name, string? contactNumber, DateOnly? dateofJoining, Guid departmentId, Guid designationId)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Name is required.", nameof(name));
+            Name = name;
+            ContactNumber = contactNumber;
+            DateOfJoining = dateofJoining ?? DateOnly.FromDateTime(DateTime.UtcNow);
+            DepartmentId = departmentId;
+            DesignationId = designationId;
+            Status = EmployeeStatus.Active;
         }
     }
 }

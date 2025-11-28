@@ -8,5 +8,7 @@ namespace EmployeeManagementSystem.Application.Employees
             Guid employeeId,
             EmployeeStatus newStatus,
             CancellationToken cancellationToken = default);
+        Task CreateEmployeeAsync(CreateEmployeeRequestDto request,
+        CancellationToken cancellationToken = default);
     }
 }

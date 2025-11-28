@@ -10,7 +10,7 @@ namespace EmployeeManagementSystem.API.Controllers
     {
         private readonly IEmployeeSearchService _employeeSearchService;
         private readonly IEmployeeManagementService _employeeManagementService;
-        public EmployeesController(IEmployeeSearchService employeeSearchService,IEmployeeManagementService employeeManagementService)
+        public EmployeesController(IEmployeeSearchService employeeSearchService, IEmployeeManagementService employeeManagementService)
         {
             _employeeSearchService = employeeSearchService;
             _employeeManagementService = employeeManagementService;
@@ -43,6 +43,14 @@ namespace EmployeeManagementSystem.API.Controllers
         {
 
             await _employeeManagementService.ChangeStatusAsync(id, request.NewStatus, cancellationToken);
+            return NoContent();
+        }
+
+        [HttpPost("createEmployee")]
+        public async Task<ActionResult> CreateEmployee([FromBody] CreateEmployeeRequestDto request,
+                                                    CancellationToken cancellationToken = default)
+        {
+            await _employeeManagementService.CreateEmployeeAsync(request, cancellationToken);
             return NoContent();
         }
 
