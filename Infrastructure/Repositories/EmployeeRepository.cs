@@ -16,7 +16,8 @@ namespace EmployeeManagementSystem.Infrastructure.Repositories
         }
         public Task AddAsync(Employee employee)
         {
-            throw new NotImplementedException();
+            _dbContext.Employees.Add(employee);
+            return Task.FromResult(_dbContext.SaveChangesAsync());
         }
 
         public Task DeleteAsync(Guid id)
@@ -36,7 +37,26 @@ namespace EmployeeManagementSystem.Infrastructure.Repositories
 
         public Task<IReadOnlyList<Employee>> SearchAsync(EmployeeSearchCriteria employeeSearchCriteria)
         {
-            throw new NotImplementedException();
+            var query = _dbContext.Employees.AsQueryable();
+            if (!string.IsNullOrEmpty(employeeSearchCriteria.Name))
+            {
+                query = query.Where(e => e.Name.StartsWith(employeeSearchCriteria.Name));
+            }
+
+            if (employeeSearchCriteria.DepartmentId.HasValue)
+            {
+                query = query.Where(e => e.DepartmentId == employeeSearchCriteria.DepartmentId.Value);
+            }
+            if (employeeSearchCriteria.Status.HasValue)
+            {
+                query = query.Where(e => e.Status == employeeSearchCriteria.Status.Value);
+            }
+
+            var skip = (employeeSearchCriteria.PageNumber - 1) * employeeSearchCriteria.PageSize;
+
+            var employees = query.Skip(skip).Take(employeeSearchCriteria.PageSize).ToList();
+
+            return Task.FromResult((IReadOnlyList<Employee>)employees);
         }
 
         public Task UpdateAsync(Employee employee)

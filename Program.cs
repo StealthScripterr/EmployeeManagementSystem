@@ -2,6 +2,7 @@ using EmployeeManagementSystem.Application.Employees;
 using EmployeeManagementSystem.Domain.Interfaces;
 using EmployeeManagementSystem.Infrastructure.Persistence;
 using EmployeeManagementSystem.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmployeeSearchService, EmployeeSearchService>();
 builder.Services.AddScoped<IEmployeeManagementService, EmployeeManagementService>();
+builder.Services.AddDbContext<EmployeeDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
