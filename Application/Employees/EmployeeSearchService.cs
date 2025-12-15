@@ -14,7 +14,7 @@ namespace EmployeeManagementSystem.Application.Employees
         {
             _employeeRepository = employeeRepository;
         }
-        public async Task<IReadOnlyList<EmployeeDto>> SearchAsync(string? namePrefix, Guid? departmentId, EmployeeStatus? status, int pageNumber, int pageSize, CancellationToken cancellationToken = default)
+        public async Task<IReadOnlyList<EmployeeDto>> SearchAsync(string? namePrefix, Guid? departmentId, EmployeeStatus? status, DateOnly? dateOfJoining, int pageNumber, int pageSize, CancellationToken cancellationToken = default)
         {
             if (pageNumber < 1)
             {
@@ -32,7 +32,8 @@ namespace EmployeeManagementSystem.Application.Employees
                 DepartmentId = departmentId,
                 Status = status,
                 PageNumber = pageNumber,
-                PageSize = pageSize
+                PageSize = pageSize,
+                DateOfJoining = dateOfJoining
             };
 
             var employees = await _employeeRepository.SearchAsync(criteria);

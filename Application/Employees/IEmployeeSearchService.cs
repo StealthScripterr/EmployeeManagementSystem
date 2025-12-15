@@ -8,6 +8,7 @@ namespace EmployeeManagementSystem.Application.Employees
                                             string? namePrefix,
                                             Guid? departmentId,
                                             EmployeeStatus? status,
+                                            DateOnly? dateOfJoining,
                                             int pageNumber,
                                             int pageSize,
                                             CancellationToken cancellationToken = default);

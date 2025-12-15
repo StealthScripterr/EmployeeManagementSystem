@@ -21,6 +21,21 @@ namespace EmployeeManagementSystem.Infrastructure.Persistence
                       .HasMaxLength(200);
             });
 
+            modelBuilder.Entity<Department>(entity =>
+            {
+                entity.ToTable("Departments");
+                entity.HasKey(d => d.Id);
+
+                entity.Property(d => d.Name)
+                      .IsRequired()
+                      .HasMaxLength(200);
+
+                entity.Property(d => d.Description)
+                      .HasMaxLength(1000);
+
+                entity.HasIndex(d => d.Name).IsUnique();
+            });
+
             base.OnModelCreating(modelBuilder);
         }
     }

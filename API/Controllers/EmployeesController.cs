@@ -21,6 +21,7 @@ namespace EmployeeManagementSystem.API.Controllers
                                                                                 [FromQuery] string? namePrefix,
                                                                                 [FromQuery] Guid? departmentId,
                                                                                 [FromQuery] EmployeeStatus? status,
+                                                                                [FromQuery] DateOnly? dateOfJoining,
                                                                                 [FromQuery] int pageNumber = 1,
                                                                                 [FromQuery] int pageSize = 20,
                                                                                 CancellationToken cancellationToken = default)
@@ -30,6 +31,7 @@ namespace EmployeeManagementSystem.API.Controllers
                                                                 namePrefix,
                                                                 departmentId,
                                                                 status,
+                                                                dateOfJoining,
                                                                 pageNumber,
                                                                 pageSize,
                                                                 cancellationToken);

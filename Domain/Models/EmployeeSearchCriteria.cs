@@ -8,6 +8,7 @@ namespace EmployeeManagementSystem.Domain.Models
         public string? Name { get; init; }
         public Guid? DepartmentId { get; init; }
         public EmployeeStatus? Status { get; init; }
+        public DateOnly? DateOfJoining { get; init; } 
         public int PageNumber { get; init; }
         public int PageSize { get; init; }
     }

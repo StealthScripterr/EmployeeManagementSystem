@@ -9,7 +9,6 @@ namespace EmployeeManagementSystem.Infrastructure.Repositories
     {
 
         private readonly EmployeeDbContext _dbContext;
-
         public EmployeeRepository(EmployeeDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -46,6 +45,10 @@ namespace EmployeeManagementSystem.Infrastructure.Repositories
             if (employeeSearchCriteria.DepartmentId.HasValue)
             {
                 query = query.Where(e => e.DepartmentId == employeeSearchCriteria.DepartmentId.Value);
+            }
+            if (employeeSearchCriteria.DateOfJoining.HasValue)
+            {
+                query = query.Where(e => e.DateOfJoining == employeeSearchCriteria.DateOfJoining.Value);
             }
             if (employeeSearchCriteria.Status.HasValue)
             {
