@@ -1,10 +1,12 @@
-﻿using EmployeeManagementSystem.Domain.Entities;
+﻿using EmployeeManagementSystem.Application.DTOs;
+using EmployeeManagementSystem.Application.Employees;
+using EmployeeManagementSystem.Domain.Entities;
 using EmployeeManagementSystem.Domain.Enums;
 using EmployeeManagementSystem.Domain.Interfaces;
 using EmployeeManagementSystem.Domain.Models;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace EmployeeManagementSystem.Application.Employees
+namespace EmployeeManagementSystem.Application.Services
 {
     public class EmployeeSearchService : IEmployeeSearchService
     {

@@ -16,6 +16,9 @@ namespace EmployeeManagementSystem.Infrastructure.Persistence
             modelBuilder.Entity<Employee>(entity =>
             {
                 entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id)
+                      .ValueGeneratedOnAdd()
+                      .HasDefaultValueSql("NEWSEQUENTIALID()");
                 entity.Property(e => e.Name)
                       .IsRequired()
                       .HasMaxLength(200);
@@ -25,6 +28,9 @@ namespace EmployeeManagementSystem.Infrastructure.Persistence
             {
                 entity.ToTable("Departments");
                 entity.HasKey(d => d.Id);
+                entity.Property(e => e.Id)
+                      .ValueGeneratedOnAdd()
+                      .HasDefaultValueSql("NEWSEQUENTIALID()");
 
                 entity.Property(d => d.Name)
                       .IsRequired()

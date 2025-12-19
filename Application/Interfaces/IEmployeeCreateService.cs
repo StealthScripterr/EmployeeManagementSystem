@@ -1,4 +1,6 @@
-﻿namespace EmployeeManagementSystem.Application.Employees
+﻿using EmployeeManagementSystem.Application.DTOs;
+
+namespace EmployeeManagementSystem.Application.Employees
 {
     public interface IEmployeeCreateService
     {

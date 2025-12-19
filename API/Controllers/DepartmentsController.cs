@@ -1,4 +1,5 @@
-﻿using EmployeeManagementSystem.Application.Departments;
+﻿using EmployeeManagementSystem.Application.DTOs;
+using EmployeeManagementSystem.Application.Employees;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagementSystem.Api.Controllers;

@@ -1,4 +1,5 @@
-﻿using EmployeeManagementSystem.Domain.Enums;
+﻿using EmployeeManagementSystem.Application.DTOs;
+using EmployeeManagementSystem.Domain.Enums;
 
 namespace EmployeeManagementSystem.Application.Employees
 {

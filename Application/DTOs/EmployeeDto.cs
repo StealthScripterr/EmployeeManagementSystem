@@ -1,4 +1,4 @@
-﻿namespace EmployeeManagementSystem.Application.Employees
+﻿namespace EmployeeManagementSystem.Application.DTOs
 {
     public sealed class EmployeeDto
     {

@@ -1,7 +1,9 @@
-﻿using EmployeeManagementSystem.Domain.Entities;
+﻿using EmployeeManagementSystem.Application.DTOs;
+using EmployeeManagementSystem.Application.Employees;
+using EmployeeManagementSystem.Domain.Entities;
 using EmployeeManagementSystem.Domain.Interfaces;
 
-namespace EmployeeManagementSystem.Application.Departments;
+namespace EmployeeManagementSystem.Application.Services;
 
 public sealed class DepartmentService : IDepartmentService
 {

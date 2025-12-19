@@ -1,4 +1,6 @@
-﻿namespace EmployeeManagementSystem.Application.Departments;
+﻿using EmployeeManagementSystem.Application.DTOs;
+
+namespace EmployeeManagementSystem.Application.Employees;
 
 public interface IDepartmentService
 {
