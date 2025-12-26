@@ -1,5 +1,5 @@
 ﻿using EmployeeManagementSystem.Application.DTOs;
-using EmployeeManagementSystem.Application.Employees;
+using EmployeeManagementSystem.Application.Interfaces;
 using EmployeeManagementSystem.Domain.Entities;
 using EmployeeManagementSystem.Domain.Interfaces;
 

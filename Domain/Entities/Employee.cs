@@ -3,13 +3,15 @@ namespace EmployeeManagementSystem.Domain.Entities
 {
     public class Employee
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string? ContactNumber { get; set; } = null;
-        public EmployeeStatus Status { get; set; }
-        public DateOnly DateOfJoining { get; set; }
-        public Guid DepartmentId { get; set; }
-        public Guid DesignationId { get; set; }
+        private Employee() { }
+
+        public Guid Id { get; private set; }
+        public string Name { get; private set; }
+        public string? ContactNumber { get; private set; } = null;
+        public EmployeeStatus Status { get; private set; }
+        public DateOnly DateOfJoining { get; private set; }
+        public Guid DepartmentId { get; private set; }
+        public Guid DesignationId { get; private set; }
 
         public void ChangeStatus(EmployeeStatus newStatus)
         {

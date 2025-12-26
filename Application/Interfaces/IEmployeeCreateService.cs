@@ -1,6 +1,6 @@
 ﻿using EmployeeManagementSystem.Application.DTOs;
 
-namespace EmployeeManagementSystem.Application.Employees
+namespace EmployeeManagementSystem.Application.Interfaces
 {
     public interface IEmployeeCreateService
     {
