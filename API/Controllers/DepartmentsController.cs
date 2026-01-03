@@ -15,7 +15,7 @@ public class DepartmentsController : ControllerBase
     {
         _departmentService = departmentService;
     }
-    [Authorize(Policy = "CanManageDepartments")]
+    [Authorize(Policy = Policies.CanManageDepartments)]
     [HttpPost]
     public async Task<ActionResult<DepartmentDto>> Create(
         [FromBody] CreateDepartmentRequestDto request,
@@ -24,7 +24,7 @@ public class DepartmentsController : ControllerBase
         var created = await _departmentService.CreateAsync(request, cancellationToken);
         return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
     }
-    [Authorize(Policy = "CanViewDepartments")]
+    [Authorize(Policy = Policies.CanViewDepartments)]
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<DepartmentDto>> GetById(Guid id, CancellationToken cancellationToken)
     {
@@ -32,7 +32,7 @@ public class DepartmentsController : ControllerBase
         if (dept is null) return NotFound();
         return Ok(dept);
     }
-    [Authorize(Policy = "CanViewDepartments")]
+    [Authorize(Policy = Policies.CanViewDepartments)]
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<DepartmentDto>>> List(
         [FromQuery] string? search,
@@ -43,7 +43,7 @@ public class DepartmentsController : ControllerBase
         var result = await _departmentService.ListAsync(search, pageNumber, pageSize, cancellationToken);
         return Ok(result);
     }
-    [Authorize(Policy = "CanManageDepartments")]
+    [Authorize(Policy = Policies.CanManageDepartments)]
     [HttpPut("{id:guid}")]
     public async Task<ActionResult<DepartmentDto>> Update(
         Guid id,
@@ -54,7 +54,7 @@ public class DepartmentsController : ControllerBase
         if (updated is null) return NotFound();
         return Ok(updated);
     }
-    [Authorize(Policy = "CanManageDepartment")]
+    [Authorize(Policy = Policies.CanManageDepartments)]
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
     {

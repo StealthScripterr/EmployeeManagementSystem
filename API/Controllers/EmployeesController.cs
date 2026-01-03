@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagementSystem.API.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class EmployeesController : ControllerBase
@@ -19,7 +18,7 @@ namespace EmployeeManagementSystem.API.Controllers
             _employeeManagementService = employeeManagementService;
         }
 
-        [Authorize(Policy = "CanViewEmployees")]
+        [Authorize(Policy = Policies.CanViewEmployees)]
         [HttpGet("search")]
         public async Task<ActionResult<IReadOnlyList<EmployeeDto>>> SearchEmployees(
                                                                                 [FromQuery] string? namePrefix,
@@ -41,7 +40,7 @@ namespace EmployeeManagementSystem.API.Controllers
                                                                 cancellationToken);
             return Ok(employees);
         }
-        [Authorize(Policy = "CanManageEmployees")]
+        [Authorize(Policy = Policies.CanManageEmployees)]
         [HttpPut("{id:guid}/status")]
         public async Task<ActionResult> ChangeStatus(Guid id,
                                                     [FromBody] ChangeEmployeeStatusRequestDto request,
@@ -52,7 +51,7 @@ namespace EmployeeManagementSystem.API.Controllers
             return NoContent();
         }
 
-        [Authorize(Policy = "CanManageEmployees")]
+        [Authorize(Policy = Policies.CanManageEmployees)]
         [HttpPost("createEmployee")]
         public async Task<ActionResult> CreateEmployee([FromBody] CreateEmployeeRequestDto request,
                                                     CancellationToken cancellationToken = default)
